@@ -2,7 +2,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Turkish](https://img.shields.io/badge/language-Turkish-red.svg)](README.md)
+[![Language: Turkish](https://img.shields.io/badge/language-Turkish-red.svg)](README.md)
+[![GitHub release](https://img.shields.io/github/release/Flynntaggart26/ai-agents-learning-repo.svg?label=Latest%20Release)](https://github.com/Flynntaggart26/ai-agents-learning-repo/releases)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Flynntaggart26/ai-agents-learning-repo)](https://github.com/Flynntaggart26/ai-agents-learning-repo/commits/main)
+[![Open Issues](https://img.shields.io/github/issues/Flynntaggart26/ai-agents-learning-repo)](https://github.com/Flynntaggart26/ai-agents-learning-repo/issues)
+[![Open Pull Requests](https://img.shields.io/github/issues-pr/Flynntaggart26/ai-agents-learning-repo)](https://github.com/Flynntaggart26/ai-agents-learning-repo/pulls)
 
 Kapsamlı, açık kaynaklı ve eğitici bir **yapay zeka ajentleri (AI Agents)** öğrenme deposu. Ajentlerin ne olduklarını, nasıl çalıştıklarını, nasıl inşa edildiklerini ve nasıl üretime alındıklarını adım adım öğrenin.
 
@@ -13,6 +17,21 @@ Kapsamlı, açık kaynaklı ve eğitici bir **yapay zeka ajentleri (AI Agents)**
 ## 📖 Bu Depo Nedir?
 
 AI ajentleri, sadece metin üreten sohbet robotlarından çok ötesindedir. Bir ajent, bir büyük dil modelini (LLM) "beyni" olarak kullanarak ortamını algılayabilir, karar alabilir, araçları çağırabilir, hatalarını düzeltebilir ve bir hedefe ulaşana kadar otonom olarak çalışabilir.
+
+### Ajent döngüsü nasıl çalışır?
+
+```mermaid
+flowchart LR
+    A[Kullanıcı Girişi] --> B[Algıla / Perceive]
+    B --> C[Düşün / Think]
+    C --> D[Eylem Yap / Act]
+    D --> E[Gözlemle / Observe]
+    E --> F{Hedef Ulaşıldı mı?}
+    F -->|Hayır| C
+    F -->|Evet| G[Nihai Yanıtı Döndür]
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style G fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+```
 
 Bu depo, teorik bilgi ve pratik örnekleri bir araya getirerek şu soruların cevabını verir:
 
@@ -154,44 +173,41 @@ node basic_agent.js
 
 ## 📁 Depo Yapısı
 
-```
-ai-agents-learning-repo/
-├── README.md                     # Bu dosya — giriş ve öğrenme rehberi
-├── LICENSE                       # MIT Lisansı
-├── CONTRIBUTING.md               # Katkıda bulunma kılavuzu
-├── .gitignore                    # Git 무시 dosyası
-├── mkdocs.yml                    # MkDocs dokümantasyon sitesi yapılandırması
-├── .github/
-│   └── workflows/
-│       └── ci.yml                # GitHub Actions CI iş akışı
-├── docs/                         # 11 adımlı eğitici belge serisi
-│   ├── 01-introduction-to-ai-agents.md
-│   ├── 02-how-agents-work.md
-│   ├── 03-agent-architecture.md
-│   ├── 04-core-capabilities.md
-│   ├── 05-tools-and-integrations.md
-│   ├── 06-memory-systems.md
-│   ├── 07-multi-agent-systems.md
-│   ├── 08-building-an-agent.md
-│   ├── 09-evaluation-and-testing.md
-│   ├── 10-deployment-and-observability.md
-│   └── 11-best-practices-and-security.md
-├── examples/                     # Çalıştırılabilir örnek kodlar
-│   ├── python/
-│   │   ├── basic_agent/
-│   │   │   ├── agent.py
-│   │   │   └── requirements.txt
-│   │   └── web_search_agent/
-│   │       ├── agent.py
-│   │       └── requirements.txt
-│   └── javascript/
-│       ├── basic_agent.js
-│       └── multi_agent_pipeline.js
-├── resources/
-│   └── free-resources.md         # Ücretsiz kitap, makale, ders ve araç listesi
-├── projects/
-│   └── project-ideas.md          # Başlangıçtan ileri seviyeye proje fikirleri
-└── glossary.md                   # AI ajenti anahtar terimleri sözlüğü
+```mermaid
+flowchart TD
+    root[ai-agents-learning-repo]
+    root --> docs[docs/]
+    root --> examples[examples/]
+    root --> resources[resources/]
+    root --> projects[projects/]
+    root --> glossary[glossary.md]
+    root --> mkdocs[mkdocs.yml]
+    root --> ci[.github/workflows/ci.yml]
+    root --> license[LICENSE]
+    root --> contributing[CONTRIBUTING.md]
+    
+    docs --> d1[01-introduction]
+    docs --> d2[02-how-agents-work]
+    docs --> d3[03-architecture]
+    docs --> d4[04-capabilities]
+    docs --> d5[05-tools]
+    docs --> d6[06-memory]
+    docs --> d7[07-multi-agent]
+    docs --> d8[08-building]
+    docs --> d9[09-evaluation]
+    docs --> d10[10-deployment]
+    docs --> d11[11-best-practices]
+    
+    examples --> py[python/]
+    examples --> js[javascript/]
+    py --> basic[basic_agent/]
+    py --> web[web_search_agent/]
+    
+    style root fill:#f9f,stroke:#333,stroke-width:4px
+    style docs fill:#e1f5fe,stroke:#01579b
+    style examples fill:#e8f5e9,stroke:#2e7d32
+    style resources fill:#fff3e0,stroke:#ef6c00
+    style projects fill:#f3e5f5,stroke:#7b1fa2
 ```
 
 ---
