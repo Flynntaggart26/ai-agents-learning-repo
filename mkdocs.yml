@@ -1,0 +1,56 @@
+site_name: AI Agents Learning Repository
+site_description: A comprehensive guide to AI agents — what they are, how they work, and how to build them.
+site_author: AI Agents Learning Repo
+repo_url: https://github.com/your-username/ai-agents-learning-repo
+edit_uri: blob/main/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - search.highlight
+    - search.share
+
+nav:
+  - Home: README.md
+  - Introduction:
+    - 01 Introduction to AI Agents: docs/01-introduction-to-ai-agents.md
+    - 02 How Agents Work: docs/02-how-agents-work.md
+    - 03 Agent Architecture: docs/03-agent-architecture.md
+    - 04 Core Capabilities: docs/04-core-capabilities.md
+  - Building:
+    - 05 Tools and Integrations: docs/05-tools-and-integrations.md
+    - 06 Memory Systems: docs/06-memory-systems.md
+    - 07 Multi-Agent Systems: docs/07-multi-agent-systems.md
+    - 08 Building an Agent: docs/08-building-an-agent.md
+  - Production:
+    - 09 Evaluation and Testing: docs/09-evaluation-and-testing.md
+    - 10 Deployment and Observability: docs/10-deployment-and-observability.md
+    - 11 Best Practices and Security: docs/11-best-practices-and-security.md
+  - Examples: examples/
+  - Resources: resources/free-resources.md
+  - Project Ideas: projects/project-ideas.md
+  - Glossary: glossary.md
+  - Contributing: CONTRIBUTING.md
+  - License: LICENSE
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - attr_list
+  - md_in_html
+
+plugins:
+  - search

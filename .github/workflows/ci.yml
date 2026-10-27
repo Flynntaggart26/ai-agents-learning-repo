@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ---- Python linting ----
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: |
+          pip install ruff
+          find examples/python -name requirements.txt -execdir pip install -r {} \;
+
+      - name: Run Python linter
+        run: ruff check examples/python docs || true
+
+      # ---- Node.js linting ----
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Node.js dependencies
+        working-directory: examples/javascript
+        run: |
+          npm init -y > /dev/null 2>&1 || true
+          npm install --save-dev eslint eslint-config-standard > /dev/null 2>&1 || true
+
+      - name: Run Node.js linter
+        working-directory: examples/javascript
+        run: npx eslint basic_agent.js multi_agent_pipeline.js || true
+
+      # ---- Markdown link check ----
+      - name: Check markdown links
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          config-file: .markdown-link-check.json || true
