@@ -20,6 +20,51 @@ This repository is a comprehensive guide to AI agents, covering their architectu
 - **How do we evaluate and improve agent quality?** (Metrics, testing strategies)
 - **How do we safely deploy agents in production?** (Scaling, observability, security)
 
+### Agent Architecture
+
+```mermaid
+graph TD
+    subgraph Perceive
+        A[Input: User Query]
+        B[Context: Memory & Tools]
+    
+    subgraph Think
+        C[Reasoning: LLM Model]
+        D[Planning: Tool Selection]
+        E[Reflection: Error Handling]
+    
+    subgraph Act
+        F[Execute: Tools/APIs]
+        G[Output: Intermediate Results]
+    
+    subgraph Observe
+        H[Feedback: User Response]
+        I[Update: Memory & State]
+    
+    A --> C
+    C --> D
+    D --> F
+    F --> G
+    G --> H
+    H -->|Yes| I
+    H -->|No| C
+    I --> C
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style C fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    style F fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style H fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    
+    classDef tool fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
+    class F,G tool;
+    class H Observe;
+    
+    classDef input fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    class A input;
+    classDef feedback fill:#fff3e0,stroke:#ef6c00,stroke-width:2px;
+    class I feedback;
+    
+    This diagram illustrates the core components of an AI agent: perceiving input, reasoning with tools, acting on decisions, and observing feedback to refine its next steps.
+
 ### Agent Loop
 
 ```mermaid
